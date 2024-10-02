@@ -1,0 +1,31 @@
+/*
+By default Fontawesome inlines its css into the page, however this causes CSP errors.
+For this reason Fontawesome's css inlining is disabled in "src/main.tsx" and manually imported here instead.
+
+See: https://docs.fontawesome.com/v5/web/other-topics/security#content-security-policy
+*/
+@import "@fortawesome/fontawesome-svg-core/styles.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .loading,
+  .loading-spinner {
+    /* Override DaisyUI's spinner svg source in order to avoid CSP errors */
+    mask-image: url("/assets/spinner.svg");
+  }
+}
+
+html {
+  height: 100%;
+}
+
+html,
+body,
+#root {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
